@@ -1,22 +1,32 @@
-
-//java maii input lane ke liye scanner ka use hota hai 
-//jaise c language maii scanf ka use hota hai waise he java mai scanner use hota hai 
-// java ke pass bhut sare ready made classes hoti hai unme se ek scanner ye input lena ka kaam kerti hai  lekin scanner dusre me rakhi hui hai   java ----util----scanner isliye use kere se phale sjava ko bolna padta hai  i want to use scanner class so please import it
+// In Java, Scanner is used to take input from the user.
+// Just like scanf is used in the C language, Scanner is used in Java.
+// Java provides many ready-made classes, and Scanner is one of them.
+// Scanner is stored inside the java.util package.
+// Therefore, before using Scanner, we must import it so that Java knows we want to use the Scanner class.
 
 import java.util.Scanner;
 
-public class input{
-    public static void main(String[] args){
+public class input {
+    public static void main(String[] args) {
         Scanner Sc = new Scanner(System.in);
-        //scanner class ka object banaya sc naam ka
-        //new memory me ek nayaaa object banata hai
-        //System.in ka matlab input lena hai  . scanner ko btaya jara hai ki input kha se lena hai 
-        System.out.println("enter your name");
-        String name=Sc.nextLine();
-        //isme do kamm ho rhe hai sc.nextLine() keybord se input lene ka kamm kerta hai aur usko name variable me store kerta hai
-        System.out.println("welcome"+name);
-        //+ ka use string ko join karne ke liye hota hai
+
+        // Created an object of the Scanner class named Sc.
+        // The 'new' keyword creates a new object in memory.
+        // System.in means input will be taken from the keyboard.
+        // Here, we are telling the Scanner where to read the input from.
+
+        System.out.println("Enter your name");
+
+        String name = Sc.nextLine();
+
+        // Two things happen here:
+        // 1. Sc.nextLine() reads a line of input from the keyboard.
+        // 2. The input is stored in the variable 'name'.
+
+        System.out.println("Welcome " + name);
+
+        // The '+' operator is used to concatenate (join) strings.
+
         Sc.close();
     }
 }
-
