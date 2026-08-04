@@ -1,0 +1,125 @@
+Java Core Concepts 
+The Big Picture
+You write code (.java file)
+        ↓
+Compiler (javac) converts it
+        ↓
+Bytecode is created (.class file)
+        ↓
+JVM runs the bytecode
+        ↓
+Output
+1. Source Code
+Code you write yourself, in human-readable Java syntax
+Saved with a .java extension (e.g. Hello.java)
+Computers cannot understand this directly — computers only understand machine code (0s and 1s)
+2. Compiler (javac)
+Takes your .java file and converts it into Bytecode
+Command: javac Hello.java
+Produces a new file: Hello.class
+
+When exactly is Hello.class created?
+
+Just writing and saving Hello.java does NOT create Hello.class
+Hello.class is created only when you actually run the compiler command (javac Hello.java)
+After that, the folder has both files:
+  Hello.java   → your original code
+  Hello.class  → bytecode, created by the compiler
+
+Analogy: Writing Hello.java is like writing a letter in Hindi and leaving it on a table. The English translation (Hello.class) doesn't exist until you actually take it to a translator (run javac).
+
+Note on VS Code: Clicking the "Run" button automatically runs javac in the background for you — you don't type it manually, but the same process (compile → then run) still happens internally.
+
+3. Bytecode
+An intermediate form — not human-readable like source code, but also not raw machine code
+Made of JVM-specific instructions
+Platform-independent — the same .class file can run on Windows, Mac, or Linux, as long as a JVM is installed there
+This is why Java's slogan is: "Write Once, Run Anywhere" (WORA)
+Why doesn't the compiler just create machine code directly?
+
+How C/C++ works (for comparison):
+
+C code → Compiler → Machine Code (specific to one OS, e.g. Windows)
+
+Problem: code compiled for Windows only runs on Windows. To run on Mac, you'd have to recompile separately for Mac.
+
+Why Java is different: Java's goal was "write code once, run it everywhere — without recompiling for each OS." So Java uses a 2-step process:
+
+Step 1: Java code → Compiler → Bytecode (universal, not tied to one OS)
+Step 2: Bytecode → JVM → Machine code (specific to whichever OS the JVM runs on)
+
+The compiler runs only once, producing a single bytecode file. That same file can then run on any OS that has a JVM.
+
+Analogy: You create one international document (bytecode) in a universal format. In France, a French translator (JVM) converts it to French. In Germany, a German translator (JVM) converts the same document to German. The original document never changes — only the local translator differs.
+
+4. JVM (Java Virtual Machine)
+A "virtual computer" — a software program that behaves like a computer inside your real computer, purely to run Java bytecode
+Takes bytecode and converts it into the real machine code specific to that computer/OS, then executes it
+Acts as a translator: bytecode (universal) → machine code (specific to your computer)
+Every OS has its own JVM (Windows JVM, Mac JVM, Linux JVM — each built differently internally), but the bytecode itself never changes — this is what makes Java portable
+
+Why is the JVM described as "for the computer to understand"? Bytecode isn't directly usable by any specific computer's processor — it's a universal middle language. The JVM's job is to take that universal bytecode and turn it into the machine code that the specific computer it's running on can actually execute.
+
+Example: You create Hello.class on a Windows laptop. You copy the file to a friend's Mac. If a Mac JVM is installed there, running java Hello works immediately — no recompiling needed. The file (.class) never changed; only the local JVM handled the translation differently.
+
+5. JRE (Java Runtime Environment)
+JRE = JVM + Core Libraries
+Includes the JVM + core Java classes (like System, String, etc. — built-in code you use but didn't write yourself)
+Only needed if you just want to run an already-compiled Java program — not write or compile one
+
+Why libraries are needed: When your code uses System.out.println(...) or String, you didn't write those yourself — they already exist as pre-built classes inside the JRE. The JVM looks them up from there when running your program.
+
+When is JRE enough? If someone gives you an already-compiled .class file and you just want to run it (java Hello), JRE alone is enough — no compiler needed.
+
+6. JDK (Java Development Kit)
+JDK = JRE + Compiler (javac) + Development Tools
+Needed if you want to write and compile your own Java code
+Includes everything in JRE, plus the compiler and other dev tools (like a debugger)
+What you want to do	What you need
+Just run an already-built Java program	JRE (JVM + libraries)
+Write and compile your own Java code	JDK (JRE + compiler + tools)
+
+          
+JDK is the biggest — it contains JRE, and JRE contains JVM.
+
+Full Process Example
+
+Step 1 — Compile:
+
+bash
+javac Hello.java
+
+Produces: Hello.class (bytecode)
+
+Step 2 — Run:
+
+bash
+java Hello
+
+JVM reads Hello.class, converts it to machine code for your specific computer, and runs it.
+
+Output:
+
+Hello World
+Quick Reference Table
+Term	What it is
+Source Code	Your .java file (human-readable)
+Compiler (javac)	Converts source code into bytecode
+Bytecode	.class file — platform-independent intermediate code
+JVM	Runs bytecode by converting it into machine code
+JRE	JVM + libraries — needed only to run programs
+JDK	JRE + compiler + tools — needed to write/compile programs
+
+
+Other basic rules:
+
+Java is case-sensitive — String and string are different
+
+Comments (ignored by the compiler, just notes for humans):
+
+
+
+java
+  // single-line comment
+  /* multi-line
+     comment */
