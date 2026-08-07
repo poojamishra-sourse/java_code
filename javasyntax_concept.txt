@@ -1,0 +1,160 @@
+Java Basics for Beginners 
+
+A simple, beginner-friendly guide explaining the fundamental building blocks of a Java program — classes, objects, the main method, variables, and the Scanner class.
+
+Sample Code
+java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        // Your code here
+        sc.close();
+    }
+}
+ Table of Contents
+What is a Class?
+What is an Object?
+Understanding public static void main(String[] args)
+What is String[] args?
+What is a Variable?
+What is the Scanner Class?
+Full Code Walkthrough
+---------------------What is a Class?
+java
+public class Main {
+    ...
+}
+In Java, everything must be written inside a class — unlike Python or JavaScript, you cannot write code outside a class.
+A class is a blueprint — like an architectural plan for building a house. The class itself isn't the house, just its design.
+Main here is the class name. This name must match the file name, so the file must be saved as Main.java.
+public means the class is accessible from anywhere.
+
+Example:
+
+java
+class Car {
+    // blueprint for a Car
+    // defines properties like color, speed, etc.
+}
+---------------------What is an Object?
+
+A class is just a design. An object is the real thing built from that design.
+
+java
+Car myCar = new Car();  // "myCar" is an object of the Car class
+
+Similarly:
+
+java
+Scanner sc = new Scanner(System.in);
+Scanner — a built-in Java class (the design)
+sc — an object created from that class
+ Understanding public static void main(String[] args)
+
+This is the entry point of every Java program.
+
+Keyword	Meaning
+public	Accessible from anywhere
+static	Can run without creating an object — JVM calls it directly
+void	Doesn't return any value
+main	The method name Java looks for to start execution
+(String[] args)	Parameter for command-line arguments
+
+--------Why void? Not every method needs to return a value. Some methods just perform an action (like printing or closing a resource) rather than calculating a result. Since nothing needs the program's result back after it finishes, main is void.
+
+Example — a method that returns a value:
+
+java
+int square(int num) {
+    return num * num;
+}
+
+Example — a method that doesn't (void):
+
+java
+void greet() {
+    System.out.println("Hello");
+}
+------------------------What is String[] args?
+args stands for arguments — an array of Strings.
+Used to pass values into your program from the command line.
+
+Example:
+
+java Main Rahul 78
+
+Here, args[0] = "Rahul" and args[1] = "78".
+
+Writing main(String[] args) is mandatory in Java, even if you never use args.
+
+--------------- What is a Variable?
+
+A variable is a container that stores a value. Java requires you to declare the data type of every variable.
+
+java
+int marks = 78;
+Part	Meaning
+int	Data type (kind of value stored)
+marks	Variable name
+78	Value stored
+
+Common Data Types:
+
+Type	Stores	Example
+int	Whole numbers	int age = 20;
+double	Decimal numbers	double price = 99.5;
+char	Single character	char grade = 'A';
+String	Text	String name = "Riya";
+boolean	true/false	boolean isPassed = true;
+-----------------------------What is the Scanner Class?
+
+Scanner is a built-in Java class used to take input from the user (e.g., via the keyboard).
+
+java
+import java.util.Scanner;
+
+Scanner sc = new Scanner(System.in);
+Part	Role	Can you rename it?
+Scanner (left)	Data type	 No
+sc	Object name	  Yes
+Scanner (right, inside new Scanner(...))	Creates the object	 No
+
+Once created, use the object to read input:
+
+java
+int marks = sc.nextInt();     // reads an integer
+String name = sc.nextLine();  // reads a line of text
+
+Always close the Scanner once you're done, to free up system resources:
+
+java
+sc.close();
+🔍 Full Code Walkthrough
+java
+import java.util.Scanner;                     // 1. Import the Scanner class
+
+public class Main {                            // 2. Define the class (must match file name)
+    public static void main(String[] args) {   // 3. Program entry point
+
+        Scanner sc = new Scanner(System.in);    // 4. Create a Scanner object for input
+
+        // 5. Your code goes here
+        // (This is a comment — Java ignores this line entirely)
+
+        sc.close();                             // 6. Close the Scanner when done
+    }
+}
+Line	What it does
+import java.util.Scanner;	Brings in the Scanner class from the java.util package
+public class Main	Declares the class (blueprint of the program)
+public static void main(String[] args)	Entry point — where execution starts
+Scanner sc = new Scanner(System.in);	Creates a Scanner object to read keyboard input
+// Your code here	Comment — placeholder for your logic
+sc.close();	Frees up resources after input is done
+ Common Beginner Mistakes
+ Forgetting to import java.util.Scanner; → causes cannot find symbol error
+ Using sc.nextLine() when you meant sc.nextInt() (or mixing the two without handling the leftover newline)
+ Calling sc.close() too early, before finishing input
+ File name not matching the public class name (e.g., class Main must be saved as
